@@ -1,4 +1,6 @@
 # Names: Samriddhi Gupta (guptasam), Olivia Miller (livmill)
+# My partner, Olivia has a Mac and I have a Windows. She is passing everything but I have one error  
+# which seems to be a Windows error that OH couldn't figure out. 
 
 from bs4 import BeautifulSoup
 import requests
@@ -15,6 +17,7 @@ def get_titles_from_search_results(filename):
 
     [('Book title 1', 'Author 1'), ('Book title 2', 'Author 2')...]
     """
+ 
     with open("search_results.htm") as doc:
         read_file = doc.read()
 
@@ -51,6 +54,7 @@ def get_search_links():
     “https://www.goodreads.com/book/show/kdkd".
 
     """
+
     r = requests.get("https://www.goodreads.com/search?q=fantasy&qid=NwUsLiA2Nc")
     soup = BeautifulSoup(r.content, 'html.parser')
     url_list = []
@@ -75,6 +79,7 @@ def get_book_summary(book_url):
     You can easily capture CSS selectors with your browser's inspector window.
     Make sure to strip() any newlines from the book title and number of pages.
     """
+
     r = requests.get(book_url)
     soup = BeautifulSoup(r.content, 'html.parser')
     title = soup.find('h1', class_ = "gr-h1 gr-h1--serif").text.strip()
@@ -98,7 +103,7 @@ def summarize_best_books(filepath):
     """
     with open(filepath) as f:
         readfile = f.read()
-    
+
     empty_list = []
     empty_list2 = []
     empty_list3 = []
